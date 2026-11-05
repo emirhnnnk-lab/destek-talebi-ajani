@@ -1,0 +1,18 @@
+[
+ {"metin": "M1001 internetim sabahtan beri çalışmıyor, acil bakar mısınız?", "kategori": "ariza", "durum": "otomatik_cozuldu"},
+ {"metin": "Merhaba, M1002 numaralı hattımda internet çok yavaş ve kopuyor.", "kategori": "ariza", "durum": "otomatik_cozuldu"},
+ {"metin": "IP santralimiz arama almıyor, müşteri no M1003. Ofis çalışamıyor!", "kategori": "ariza", "durum": "otomatik_cozuldu"},
+ {"metin": "Son faturamın kopyasını mail atabilir misiniz? M1003", "kategori": "fatura_kopyasi", "durum": "otomatik_cozuldu"},
+ {"metin": "Muhasebe için ekim faturası lazım. Abone no: M1005", "kategori": "fatura_kopyasi", "durum": "otomatik_cozuldu"},
+ {"metin": "Fatura kopyası rica ediyorum, M1001", "kategori": "fatura_kopyasi", "durum": "otomatik_cozuldu"},
+ {"metin": "Şifremi unuttum, giriş yapamıyorum. M1005", "kategori": "sifre", "durum": "otomatik_cozuldu"},
+ {"metin": "Online işlemler hesabıma giremiyorum, şifre hatalı diyor. M1002", "kategori": "sifre", "durum": "otomatik_cozuldu"},
+ {"metin": "Bu ay faturam normalin iki katı, fazlasını iade edin. M1002", "kategori": "fatura_itiraz", "durum": "onay_bekliyor"},
+ {"metin": "SMS paketimden kullanmadığım ücret kesilmiş, geri istiyorum. M1004", "kategori": "fatura_itiraz", "durum": "onay_bekliyor"},
+ {"metin": "Yanlış tarife uygulanmış, iadeyi ne zaman yaparsınız? M1001", "kategori": "fatura_itiraz", "durum": "onay_bekliyor"},
+ {"metin": "Taşınıyorum, M1004 aboneliğimi iptal etmek istiyorum.", "kategori": "iptal", "durum": "onay_bekliyor"},
+ {"metin": "Hizmetten memnun değilim, M1002 hattımı kapatın.", "kategori": "iptal", "durum": "onay_bekliyor"},
+ {"metin": "Ofisiniz nerede, ziyarete gelmek istiyorum.", "kategori": "diger", "durum": "insana_devredildi"},
+ {"metin": "Şirketinizde iş ilanı var mı?", "kategori": "diger", "durum": "insana_devredildi"},
+ {"metin": "Kampanyalarınız hakkında bilgi alabilir miyim?", "kategori": "diger", "durum": "insana_devredildi"}
+]

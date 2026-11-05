@@ -1,0 +1,7 @@
+{
+ "M1001": {"ad": "Deniz Arslan", "paket": "Fiber 100", "durum": "aktif", "bolge": "Kadıköy", "son_fatura": 649.90, "fatura_odendi": true},
+ "M1002": {"ad": "Can Öztürk", "paket": "Fiber 50", "durum": "aktif", "bolge": "Beşiktaş", "son_fatura": 499.90, "fatura_odendi": false},
+ "M1003": {"ad": "Elif Koç", "paket": "IP Santral Pro", "durum": "aktif", "bolge": "Ataşehir", "son_fatura": 1890.00, "fatura_odendi": true},
+ "M1004": {"ad": "Mert Yıldız", "paket": "SMS Paket 10K", "durum": "askıda", "bolge": "Şişli", "son_fatura": 1200.00, "fatura_odendi": false},
+ "M1005": {"ad": "Zeynep Aydın", "paket": "Fiber 100", "durum": "aktif", "bolge": "Kadıköy", "son_fatura": 649.90, "fatura_odendi": true}
+}
