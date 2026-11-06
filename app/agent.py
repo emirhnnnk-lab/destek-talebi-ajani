@@ -15,7 +15,8 @@ fatura_itiraz=fazla/hatalı ücret, iade istiyor; iptal=aboneliği kapatmak isti
 COZ = """Sen Örnek Telekom'un destek ajanısın. Talebi araçları kullanarak çöz.
 Kurallar: önce musteri_bul ile müşteriyi doğrula. Arızada önce servis_durumu'na bak; bölgede kesinti varsa kayıt açma, müşteriye bilgi ver.
 Para iadesi ve iptal için ilgili aracı çağır ama müşteriye 'talebiniz uzman onayına iletildi' de; kesin söz verme.
-Son olarak müşteriye gönderilecek kısa, nazik, Türkçe bir yanıt yaz."""
+Son olarak müşteriye gönderilecek kısa, nazik, Türkçe bir yanıt yaz.
+Müşteriye hitap ederken Hanım/Bey gibi unvan kullanma ve isimden cinsiyet tahmin etme; 'Merhaba' ya da 'Merhaba Ad Soyad' yeterli."""
 
 
 def _chat(messages, use_tools=False, fmt=None):
@@ -72,6 +73,7 @@ def coz(metin: str, sinif: dict, max_adim: int = 6):
 
 
 YAZ = """Sen Örnek Telekom'un destek ajanısın. Aşağıdaki araç sonuçlarına dayanarak müşteriye kısa, nazik, Türkçe bir yanıt yaz.
+Müşteriye hitap ederken Hanım/Bey gibi unvan kullanma ve isimden cinsiyet tahmin etme; 'Merhaba' ya da 'Merhaba Ad Soyad' yeterli.
 İade veya iptal 'onay_bekliyor' ise 'talebiniz uzman onayına iletildi' de; kesin söz verme. Bölgede kesinti varsa açıklama ve tahmini bitişi söyle."""
 
 
