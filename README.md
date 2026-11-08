@@ -31,6 +31,18 @@ Panelde canlı sayaçlar (otomatik / onay bekleyen / devredilen, otomasyon oran�
 
 v1'de 3B model bazen yanlış aracı seçiyordu (iade talebinde teknik kayıt açmak gibi): [rapor](eval/RAPOR_v1_serbest_arac.md). v2'de karar mantığı deterministik, LLM sınıflandırma ve doğal dil yanıtında kullanılıyor. Bilinmeyen durumlar serbest araç döngüsüne düşüyor. Ayrıntı: [eval/RAPOR.md](eval/RAPOR.md)
 
+## Kalıcı kayıt ve SQL raporları
+Talepler, her araç çağrısı ve onay kararları SQLite'a yazılır (`app/db.py`; tablolar `talepler`, `arac_cagrilari`, `onaylar`). Sunucu yeniden başlasa da denetim izi kaybolmaz. Raporlar düz SQL ile çıkar: `GET /rapor/<ad>`.
+
+| Rapor | Soru |
+|---|---|
+| `kategori_bazinda_otomasyon` | Hangi kategoride taleplerin yüzde kaçı insansız çözülüyor? |
+| `en_cok_kullanilan_araclar` | Ajan en çok hangi aracı, kaç farklı talepte çağırıyor? |
+| `onay_sonuclari` | İnsan onayına düşen işler kategoriye göre kaç kez onaylandı ya da reddedildi? |
+| `dogrulamasiz_islem` | **Güvenlik denetimi:** müşteri doğrulanmadan işlem aracı çağrılan talepler var mı? |
+
+Sonuncusu, aşağıdaki v1 hatasının (müşteri doğrulamadan işlem yapmak) bir daha sessizce geçmemesi için yazıldı. Ajanın her çağrısını sonradan bir sorguyla denetleyebiliyorum. Testler: `tests/test_db.py`.
+
 ## Hata → düzeltme süreci
 
 **1. Ne bozuktu?** İlk sürümde LLM'e araçları verip "talebi çöz" dedim; hangi aracı ne sırayla çağıracağına kendisi karar veriyordu. Yönlendirme puanı 14/16 çıktı, ilk bakışta fena değildi.

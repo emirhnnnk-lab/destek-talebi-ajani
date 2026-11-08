@@ -2,10 +2,11 @@ import os, uuid
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
-from . import agent, tools
+from . import agent, db, tools
 
 app = FastAPI(title="Destek Talebi Otomasyon Ajanı")
 KUYRUK: dict = {}
+DB = db.baglan()
 
 
 class Talep(BaseModel):
@@ -17,6 +18,7 @@ class Talep(BaseModel):
 def yeni_talep(t: Talep):
     tid = "T-" + uuid.uuid4().hex[:6].upper()
     KUYRUK[tid] = {**agent.isle(tid, t.metin), "kanal": t.kanal}
+    db.talep_kaydet(DB, KUYRUK[tid], t.metin, t.kanal)
     return KUYRUK[tid]
 
 
@@ -25,7 +27,15 @@ def onayla(tid: str, karar: str = "onayla"):
     if tid not in KUYRUK or KUYRUK[tid]["durum"] != "onay_bekliyor":
         raise HTTPException(404, "onay bekleyen talep yok")
     KUYRUK[tid]["durum"] = "onaylandi" if karar == "onayla" else "reddedildi"
+    db.onay_kaydet(DB, tid, KUYRUK[tid]["durum"])
     return KUYRUK[tid]
+
+
+@app.get("/rapor/{ad}")
+def rapor(ad: str):
+    if ad not in db.RAPORLAR:
+        raise HTTPException(404, f"rapor yok; seçenekler: {', '.join(db.RAPORLAR)}")
+    return db.rapor(DB, ad)
 
 
 @app.get("/talepler")
