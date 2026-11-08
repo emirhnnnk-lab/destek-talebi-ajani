@@ -54,6 +54,16 @@ Only **3/16** requests matched the expected tool chain exactly.
 
 **Lesson:** a metric that only looks at the final box hides errors that reach the right box by the wrong path. With agents you also have to measure the tool chain. And it is safer to use the model where you can't write a rule (understanding the request, writing the reply), not for decisions you can write a rule for.
 
+## Repeatability: is it equally right every time? (Nov 8)
+Getting 16/16 in one run could be luck. With a setting that makes the agent behave more randomly (temperature 0.7), I ran each request **5 times** and counted it as a success only if it was right **in all 5 runs** (the pass^k measure).
+
+| Measure | Result |
+|---|---|
+| Average success in a single run (pass@1) | 80/80 |
+| Right in all 5 runs (pass^5) | **16/16** (95% confidence interval: 0.81-1.00) |
+
+I think the reason is the design: the model only classifies the request and the fixed playbook does the rest, so randomness has no room to change the outcome. Limit: 16 requests is few and the confidence interval is wide; it should be measured again with harder, more ambiguous requests. The run was long, so it ran under [Nöbetçi](https://github.com/emirhnnnk-lab/nobetci). Script: `DESTEK_TEMP=0.7 python eval/pass_k.py 5`.
+
 ## Permanent log and SQL reports
 Requests, every tool call and every approval decision are written to a database (SQLite): `app/db.py`, tables `talepler` (requests), `arac_cagrilari` (tool calls), `onaylar` (approvals). The audit trail survives a server restart. Reports come from plain SQL: `GET /rapor/<name>`.
 

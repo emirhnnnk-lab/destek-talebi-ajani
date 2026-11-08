@@ -54,6 +54,16 @@ Beklenen araç zinciriyle birebir eşleşen talep sadece **3/16** idi.
 
 **Ders:** Sadece sonuç kutusuna bakan bir ölçüm, yanlış yoldan doğru kutuya varan hataları gizliyor. Ajanlarda araç zincirini de ölçmek gerekiyor. Bir de modeli, kuralı yazılabilen kararlar için değil, kuralın yazılamadığı yerlerde (talebi anlamak, müşteriye cevap yazmak) kullanmak daha güvenli.
 
+## Tekrarlanabilirlik: her seferinde aynı doğrulukta mı? (08.11)
+Tek bir denemede 16/16 almak şans olabilir. Ajanı daha rastgele davranmaya zorlayan bir ayarla (sıcaklık 0,7) her talebi **5 kez** çalıştırdım ve bir talebi ancak **5 denemenin hepsinde** doğruysa başarılı saydım (pass^k ölçüsü).
+
+| Ölçü | Sonuç |
+|---|---|
+| Tek denemede ortalama başarı (pass@1) | 80/80 |
+| 5 denemenin hepsinde doğru (pass^5) | **16/16** (%95 güven aralığı: 0,81-1,00) |
+
+Bunun sebebi bence tasarım: model sadece talebi sınıflıyor, gerisini sabit oyun kitabı yapıyor; rastgelelik sonucu değiştirecek yer bulamıyor. Sınırı: 16 talep az, güven aralığı geniş; daha zor ve belirsiz taleplerle tekrar ölçülmeli. Ölçüm uzun sürdüğü için [Nöbetçi](https://github.com/emirhnnnk-lab/nobetci) gözetiminde çalıştı. Betik: `DESTEK_TEMP=0.7 python eval/pass_k.py 5`.
+
 ## Kalıcı kayıt ve SQL raporları
 Talepler, her araç çağrısı ve onay kararları bir veritabanına (SQLite) yazılıyor: `app/db.py`, tablolar `talepler`, `arac_cagrilari`, `onaylar`. Sunucu yeniden başlasa da denetim izi kaybolmuyor. Raporlar düz SQL ile çıkıyor: `GET /rapor/<ad>`.
 

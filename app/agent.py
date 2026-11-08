@@ -21,7 +21,7 @@ Müşteriye hitap ederken Hanım/Bey gibi unvan kullanma ve isimden cinsiyet tah
 
 def _chat(messages, use_tools=False, fmt=None):
     # num_predict: küçük modelin sonsuz/uzun üretime kaçmasını engeller
-    body = {"model": MODEL, "stream": False, "messages": messages, "options": {"temperature": 0, "num_predict": 300}}
+    body = {"model": MODEL, "stream": False, "messages": messages, "options": {"temperature": float(os.getenv("DESTEK_TEMP", "0")), "num_predict": 300}}
     if use_tools:
         body["tools"] = tools.SEMA
     if fmt:
