@@ -52,8 +52,6 @@ Only **3/16** requests matched the expected tool chain exactly.
 | Action with the wrong tool | 3 | **0** |
 | Action without verifying the customer | 5 | **0** |
 
-**4. A bug I found later.** Reading the demo replies, I saw the model guessing gender from names and writing "Mr./Ms.". A wrong guess would upset a customer. I added a rule to the reply instructions: "don't use titles, don't guess gender from names".
-
 **Lesson:** a metric that only looks at the final box hides errors that reach the right box by the wrong path. With agents you also have to measure the tool chain. And it is safer to use the model where you can't write a rule (understanding the request, writing the reply), not for decisions you can write a rule for.
 
 ## Permanent log and SQL reports

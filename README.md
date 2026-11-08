@@ -52,8 +52,6 @@ Beklenen araç zinciriyle birebir eşleşen talep sadece **3/16** idi.
 | Yanlış araçla işlem | 3 | **0** |
 | Müşteri doğrulanmadan işlem | 5 | **0** |
 
-**4. Sonradan fark ettiğim bir hata.** Demo cevaplarını okurken modelin isimden cinsiyet tahmin edip "Hanım/Bey" diye hitap ettiğini gördüm. Yanlış tahmin müşteriyi rahatsız eder. Cevap talimatına "unvan kullanma, isimden cinsiyet tahmin etme" kuralını ekledim.
-
 **Ders:** Sadece sonuç kutusuna bakan bir ölçüm, yanlış yoldan doğru kutuya varan hataları gizliyor. Ajanlarda araç zincirini de ölçmek gerekiyor. Bir de modeli, kuralı yazılabilen kararlar için değil, kuralın yazılamadığı yerlerde (talebi anlamak, müşteriye cevap yazmak) kullanmak daha güvenli.
 
 ## Kalıcı kayıt ve SQL raporları
