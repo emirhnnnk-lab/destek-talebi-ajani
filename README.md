@@ -1,5 +1,7 @@
 # Destek Talebi Otomasyon Ajanı
 
+> **EN summary:** A support-ticket agent running on a local LLM: it classifies incoming tickets, resolves routine ones through tool chains (invoice copy, password reset, outage check, technical ticket) and routes risky actions (refunds, cancellations) to human approval. Every tool call is audit-logged. The README documents the debugging story: v1 looked fine on routing (14/16) but the exact tool chain was right in only 3/16 cases; v2 fixed it to 16/16.
+
 **🔴 Canlı demo:** [huggingface.co/spaces/emrhnnnnnn/ai-uygulamalar-demo](https://huggingface.co/spaces/emrhnnnnnn/ai-uygulamalar-demo) — sekme: 🎧 Destek Talebi Ajanı (demo OpenAI gpt-5.4-mini ile çalışır; iş mantığı bu repodakiyle aynı)
 
 Müşteri destek taleplerini **lokal LLM** ile sınıflandıran, araçlarla çözen ve riskli işlemleri **insan onayına** bırakan ajan. Tekrar eden destek işini (fatura kopyası, şifre sıfırlama, arıza kaydı) otomatiğe bağlar, ekibi sadece gerçekten gereken yerde devreye sokar.
