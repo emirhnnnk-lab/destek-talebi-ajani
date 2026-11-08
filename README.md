@@ -36,7 +36,7 @@ v1'de 3B model bazen yanlış aracı seçiyordu (iade talebinde teknik kayıt a�
 **2. Nasıl fark ettim?** Rapora araç zincirini de yazdırınca ([v1 raporu](eval/RAPOR_v1_serbest_arac.md)) tablo değişti. Yönlendirme puanı asıl sorunu saklıyordu:
 - **Yanlış araç:** "Faturam iki katı, iade edin" talebinde iade yerine **teknik arıza kaydı** açıldı. "Hattımı kapatın" talebinde de iptal yerine yine teknik kayıt açıldı. Sonuç doğru kutuya (onay bekliyor) düştüğü için puan bunu görmedi.
 - **Hiç araç yok:** İki şifre talebinde model hiçbir araç çağırmadı, talep boşuna insana gitti.
-- **Kimlik doğrulama atlandı:** "Önce müşteriyi bul" kuralı talimatta yazmasına rağmen 16 talebin 9'unda müşteri doğrulanmadan işlem yapıldı.
+- **Kimlik doğrulama atlandı:** "Önce müşteriyi bul" kuralı talimatta yazmasına rağmen 5 talepte müşteri hiç doğrulanmadan işlem yapıldı, 1 talepte de doğrulama sonradan yapıldı.
 - **Eksik adım:** İki arıza talebinde kesinti yokken teknik kayıt açılmadı.
 
 Beklenen zincirle birebir eşleşen talep sadece **3/16** idi.
@@ -50,7 +50,7 @@ Beklenen zincirle birebir eşleşen talep sadece **3/16** idi.
 | Doğru yönlendirme | 14/16 | **16/16** |
 | Beklenen araç zinciri | 3/16 | **16/16** |
 | Yanlış araçla işlem | 3 | **0** |
-| Müşteri doğrulanmadan işlem | 9 | **0** |
+| Müşteri doğrulanmadan işlem | 5 | **0** |
 
 **Sonradan bulunan hata:** Demo cevaplarını okurken modelin isimden cinsiyet tahmin edip "Hanım/Bey" diye hitap ettiğini gördüm. Yanlış tahmin müşteriyi rahatsız eder. Yanıt talimatına "unvan kullanma, isimden cinsiyet tahmin etme" kuralını ekledim.
 
