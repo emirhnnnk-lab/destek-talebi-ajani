@@ -6,6 +6,8 @@
 
 Most requests that reach a support team are the same few things: "send me a copy of my invoice", "I forgot my password", "my internet is down". Having a person open each one and do the same steps is tiring and slow. This agent reads the request, understands what it is, and solves the repetitive ones by itself using tools. For anything involving **money or cancellation**, it stops and waits for a human to approve. So the team only steps in where it is really needed. The model runs on my own computer (local LLM), so customer data never leaves it.
 
+![Support Ticket Agent demo: a refund request waits for human approval, with tool steps and classification](docs/ekran-1.png)
+
 ## How it works
 ```
 Request (e-mail / form / WhatsApp) → model classifies it → a playbook runs the right tools in order

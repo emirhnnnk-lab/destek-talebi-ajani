@@ -6,6 +6,8 @@
 
 Bir şirketin destek ekibine gelen taleplerin çoğu birbirinin aynısı: "faturamın kopyasını gönderin", "şifremi unuttum", "internetim yok". Bunları bir insanın tek tek açıp aynı işlemi yapması hem yorucu hem yavaş. Bu ajan talebi okuyor, ne olduğunu anlıyor, tekrar eden işleri araçlarla kendisi çözüyor. **Para ya da iptal içeren** işlemlerde ise durup insan onayı bekliyor. Böylece ekip sadece gerçekten gereken yerde devreye giriyor. Model kendi bilgisayarımda çalışıyor (yerel LLM), yani müşteri verisi dışarı çıkmıyor.
 
+![Destek Talebi Ajanı demosu: iade talebi insan onayına düştü, araç adımları ve sınıflandırma görünüyor](docs/ekran-1.png)
+
 ## Nasıl çalışıyor
 ```
 Talep (e-posta / form / WhatsApp) → model talebi sınıflar → oyun kitabı doğru araçları sırayla çalıştırır
