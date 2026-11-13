@@ -66,6 +66,11 @@ Tek bir denemede 16/16 almak şans olabilir. Ajanı daha rastgele davranmaya zor
 
 Bunun sebebi bence tasarım: model sadece talebi sınıflıyor, gerisini sabit oyun kitabı yapıyor; rastgelelik sonucu değiştirecek yer bulamıyor. Sınırı: 16 talep az, güven aralığı geniş; daha zor ve belirsiz taleplerle tekrar ölçülmeli. Ölçüm uzun sürdüğü için [Nöbetçi](https://github.com/emirhnnnk-lab/nobetci) gözetiminde çalıştı. Betik: `DESTEK_TEMP=0.7 python eval/pass_k.py 5`.
 
+## Değerlendirmenin kaçırdığı yol (13.11)
+Yukarıdaki 16/16 yerel modelle (Ollama) ve bu 16 senaryo için geçerli; canlı demonun her yolunu kanıtlamıyor. Başvuru öncesi kontrolde canlı demoya müşteri numarası olmayan bir soru ("Çalışma saatleriniz nedir?") yazdım, iki denemede de "Model şu an yanıt vermedi" hatası çıktı.
+Numarasız talepler oyun kitabına girmeyip serbest araç döngüsüne düşüyor. Demonun ortak yardımcısı her çağrıya `reasoning_effort="low"` ekliyordu ve sağlayıcı bu parametreyi araçlarla aynı istekte HTTP 400 ile reddetti. 16 senaryonun hiçbiri bu yoldan geçmediği için değerlendirme hatayı göremedi.
+Düzeltmeden sonra model çalışma saatini uydurdu (veride yok); bu yüzden numarasız genel sorular artık sabit bir "temsilciye ilettik" cevabı alıyor. Demo deposunda bu yolu sahte model istemcisiyle 5 test koruyor. Ayrıntı: [Deney Defteri kaydı](https://github.com/emirhnnnk-lab/deney-defteri/blob/main/backend/seed/experiments.json) (`eval-misses-live-path`).
+
 ## Kalıcı kayıt ve SQL raporları
 Talepler, her araç çağrısı ve onay kararları bir veritabanına (SQLite) yazılıyor: `app/db.py`, tablolar `talepler`, `arac_cagrilari`, `onaylar`. Sunucu yeniden başlasa da denetim izi kaybolmuyor. Raporlar düz SQL ile çıkıyor: `GET /rapor/<ad>`.
 

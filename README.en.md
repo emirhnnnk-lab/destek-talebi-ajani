@@ -66,6 +66,11 @@ Getting 16/16 in one run could be luck. With a setting that makes the agent beha
 
 I think the reason is the design: the model only classifies the request and the fixed playbook does the rest, so randomness has no room to change the outcome. Limit: 16 requests is few and the confidence interval is wide; it should be measured again with harder, more ambiguous requests. The run was long, so it ran under [Nöbetçi](https://github.com/emirhnnnk-lab/nobetci). Script: `DESTEK_TEMP=0.7 python eval/pass_k.py 5`.
 
+## The path the eval missed (Nov 13)
+The 16/16 above holds for the local model (Ollama) and these 16 scenarios; it does not prove every path of the live demo. In a check before sending job applications, I typed a question with no customer number into the live demo ("Çalışma saatleriniz nedir?", "What are your opening hours?"). Both tries returned "Model şu an yanıt vermedi" ("the model did not respond").
+Requests with no customer number skip the playbook and fall into the free tool-calling loop. The demo's shared helper added `reasoning_effort="low"` to every call, and the provider rejected that parameter in the same request as tools with HTTP 400. None of the 16 scenarios goes down this path, so the eval could not see the error.
+After the fix the model invented opening hours (not in the data), so general questions with no customer number now get a fixed "forwarded to a support agent" reply. In the demo repo, 5 tests with a fake model client guard this path. Details: [Deney Defteri entry](https://github.com/emirhnnnk-lab/deney-defteri/blob/main/backend/seed/experiments.json) (`eval-misses-live-path`).
+
 ## Permanent log and SQL reports
 Requests, every tool call and every approval decision are written to a database (SQLite): `app/db.py`, tables `talepler` (requests), `arac_cagrilari` (tool calls), `onaylar` (approvals). The audit trail survives a server restart. Reports come from plain SQL: `GET /rapor/<name>`.
 
